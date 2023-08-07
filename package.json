@@ -1,0 +1,55 @@
+{
+  "name": "ParcelTemplate",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.4",
+    "@christian-beckmann/parcel-transformer-twig": "^0.1.0",
+    "@parcel/babel-preset-env": "^2.7.0",
+    "@parcel/transformer-sass": "^2.7.0",
+    "autoprefixer": "9.0.0",
+    "bootstrap": "^5.2.3",
+    "buffer": "^5.7.1",
+    "crypto-browserify": "^3.12.0",
+    "cssnano": "^5.1.13",
+    "eslint": ">=5.16.0",
+    "eslint-config-google": "^0.14.0",
+    "events": "^3.3.0",
+    "parcel": "^2.7.0",
+    "parcel-namer-rewrite": "^2.0.0-rc.3",
+    "path-browserify": "^1.0.1",
+    "postcss-uncss": "^0.17.0",
+    "process": "^0.11.10",
+    "rimraf": "^3.0.2",
+    "sass": "^1.55.0",
+    "stream-browserify": "^3.0.0",
+    "stylelint": "^14.14.0",
+    "stylelint-config-standard-scss": "^6.1.0",
+    "uncss": "^0.17.0"
+  },
+  "scripts": {
+    "clean": "rimraf ./dist/* && rimraf ./.parcel-cache/*",
+    "start": "npm run clean && parcel src/index.twig --open --log-level verbose -p 8000",
+    "lint:css": "stylelint src/scss/**/*.scss --fix",
+    "lint:js": "eslint src/js/**/*.js --fix",
+    "build": "npm run clean && parcel build src/index.twig --public-url ./ --no-source-maps",
+    "upgrade": "yarn upgrade-interactive"
+  },
+  "parcel-namer-rewrite": {
+    "rules": {
+      "(.*)\\.(css)": "css/$1.{hash}.$2",
+      "(.*)\\.(js)": "js/$1.{hash}.$2",
+      "(.*)\\.(woff2?)": "fonts/$1.$2",
+      "(.*)\\.(svg|png|gif|jpg)": "images/$1.$2"
+    },
+    "silent": true
+  },
+  "keywords": [],
+  "author": "fadrnym@gmail.com",
+  "license": "ISC"
+}

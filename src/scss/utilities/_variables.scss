@@ -1,0 +1,135 @@
+// Colors
+$primary: #1e2859;
+$primary-light: #e9eaef;
+$secondary: #f26122;
+$secondary-light: #fdefea;
+$gray-100: #f8f8f8;
+$gray-200: #f5f5f5;
+$gray-300: #e8e8e8;
+$gray-400: #d3d3d3;
+$gray-450: #d8d8d8;
+$gray-500: #c0c0c0;
+$gray-600: #a9a9a9;
+$gray-700: #808080;
+$gray-800: #696969;
+$gray-900: #303030;
+$success: green;
+$danger: #ee2405;
+$warning: #f8ad41;
+$info: lightblue;
+$headings-color: #181818;
+$body-color: $gray-900;
+$link-color: $body-color;
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "secondary-light": $secondary-light,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "gray-100": $gray-100,
+  "gray-200": $gray-200,
+  "gray-300": $gray-300,
+  "gray-400": $gray-400,
+  "gray-500": $gray-500,
+  "gray-600": $gray-600,
+  "gray-700": $gray-700,
+  "gray-800": $gray-800,
+  "gray-900": $gray-900
+) !default;
+
+// Font weight
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Typography
+$font-family-sans-serif: "Montserrat", sans-serif;
+$font-size-base: 1rem;
+$font-size-sm: 0.867rem;
+$font-size-md: 1.2rem;
+$font-size-lg: 1.333rem;
+$h1-font-size: 2.667rem;
+$h2-font-size: 2.133rem;
+$h3-font-size: 1.867rem;
+$h4-font-size: 1.6rem;
+$h5-font-size: 1.333rem;
+$h6-font-size: 1rem;
+$headings-font-weight: $font-weight-semibold;
+$headings-margin-bottom: 0;
+
+// Modal
+$modal-sm: 500px;
+$modal-md: 1030px;
+$modal-lg: 1140px;
+$modal-xl: 1140px;
+$modal-content-border-radius: 0;
+$modal-content-border-width: 0;
+$modal-header-border-width: 0;
+$modal-header-padding: 0;
+$modal-header-padding-x: 0;
+$modal-header-padding-y: 0;
+$modal-inner-padding: 0;
+$modal-footer-margin-between: 0;
+
+// Grid
+$enable-cssgrid: true;
+$grid-gutter-width: 2rem;
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1346px
+);
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1266px
+);
+$spacer: 15px;
+$spacers: (
+  0: 0,
+  2: $spacer * 0.333333333,
+  4: $spacer * 0.666666667,
+  6: $spacer,
+  7: $spacer * 2,
+  8: $spacer * 4,
+  10: $spacer * 8,
+);
+
+// Border radius
+$border-radius: 0.5rem;
+$border-radius-sm: 0.067rem;
+$border-radius-md: 0.2rem;
+
+// Buttons
+$btn-padding-x: 30px;
+$btn-padding-y: 1rem;
+$btn-line-height: 1.134;
+$btn-font-weight: $font-weight-semibold;
+$btn-disabled-opacity: 1;
+
+// Forms
+$input-color: $gray-600;
+$input-border-color: $gray-400;
+$input-border-radius: $border-radius-sm;
+$input-padding-x: 1rem;
+$input-padding-y: 0.667rem;
+$input-focus-color: $gray-900;
+$input-focus-border-color: $gray-800;
+$form-check-min-height: auto;
+$form-check-input-border: 1px solid $gray-800;
+$form-check-input-checked-bg-color: $secondary;
+$form-check-input-border-radius: 0;
+$form-select-bg-size: 12px 7px;
+$form-select-indicator: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'><path fill='#303030' d='M5.984 7.02a.776.776 0 0 1-.29-.053.805.805 0 0 1-.264-.185L.199 1.552C.058 1.41-.008 1.22 0 .982.01.745.084.556.225.415.401.24.591.165.793.191c.203.026.383.11.542.25l4.65 4.65 4.649-4.65c.14-.14.33-.22.568-.237a.625.625 0 0 1 .568.238c.176.14.251.325.225.554-.027.23-.11.423-.251.582L6.539 6.782a.805.805 0 0 1-.264.185.776.776 0 0 1-.29.053z'/></svg>");
+
+// Z-index
+$z-header: 100;

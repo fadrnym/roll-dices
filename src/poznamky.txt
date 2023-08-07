@@ -1,0 +1,5 @@
+var dudes = document.querySelectorAll('.choice img'); // Vrací nodeList, nikoliv pole, proto se musi prevest na pole.
+dudes = Array.from( dudes );
+
+// alebo stara dobra klasika
+dudes = Array.prototype.slice.call(dudes);
