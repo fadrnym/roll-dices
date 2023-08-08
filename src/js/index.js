@@ -1,3 +1,5 @@
+import {Modal} from 'bootstrap';
+
 (() => {
   const $newGameBtn = document.querySelectorAll('[data-new-game]');
   const $rollBtn = document.querySelectorAll('[data-roll]');
@@ -5,23 +7,40 @@
   const $dice = document.querySelectorAll('[data-dice]');
   const $players = document.querySelectorAll('[data-player]');
   const activePlayerClass = 'd-none';
-  const limitToWin = 10;
+  const limitToWin = 250;
+  const $modal = document.getElementById('infoModal');
+  const $infoModal = new Modal($modal);
+  const lang = {
+    warning: 'Upozornění!',
+    end: 'Konec hry',
+    winning: 'Vítězí',
+    startGame: 'Nejprve zahajte hru!',
+  };
+  const diceScale = [
+    {transform: 'scale(1)'},
+    {transform: 'scale(1.2)'},
+    {transform: 'scale(1)'},
+  ];
+  const diceTiming = {
+    duration: 500,
+    iterations: 1,
+  };
 
-  const getRandomDiceNum = (min = 1, max = 6) => {
+  const getRandomPlayerOrDiceNum = (min = 1, max = 6) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
 
-  const getRandomPlayer = (min = 0, max = 1) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  };
-
-  const showDots = ($dice, numberOfDots) => {
+  const showDots = ($dice, numberOfDots, animate = true) => {
     $dice.innerHTML = '';
     $dice.className = '';
     $dice.classList.add('b-dice', `b-dice--${numberOfDots}`);
 
     for (let i = 0; i < numberOfDots; ++i) {
       $dice.innerHTML += '<span class="b-dice__dot"></span>';
+    }
+
+    if (animate) {
+      $dice.animate(diceScale, diceTiming);
     }
   };
 
@@ -35,6 +54,14 @@
     $players[key].dataset.playerActive = '1';
   };
 
+  const showInfoModal = ($infoModal, title = '', text = '') => {
+    const $infoModalTitle = $infoModal._dialog.querySelectorAll('[data-bs-title]');
+    const $infoModalText = $infoModal._dialog.querySelectorAll('[data-bs-text]');
+    $infoModalTitle[0].innerText = title;
+    $infoModalText[0].innerText = text;
+    $infoModal.show();
+  };
+
   const getActivePlayer = () => {
     return document.querySelectorAll('[data-player-active="1"]')[0];
   };
@@ -43,6 +70,7 @@
     $players.forEach((item) => {
       item.querySelectorAll('[data-score]')[0].innerText = 0;
       item.querySelectorAll('[data-score-total]')[0].innerText = 0;
+      showDots($dice[0], 0, false);
     });
   };
 
@@ -66,7 +94,7 @@
     $activePlayer.querySelectorAll('[data-score-total]')[0].innerText = totalSum;
 
     if (totalSum >= limitToWin) {
-      alert(`Vítězí ${$activePlayer.querySelectorAll('[data-name]')[0].innerText}`);
+      showInfoModal($infoModal, lang.end, `${lang.winning} ${$activePlayer.querySelectorAll('[data-name]')[0].innerText}`);
       return;
     }
 
@@ -88,27 +116,43 @@
   };
 
   // Buttons
-  $newGameBtn[0].addEventListener('click', () => {
-    const randomPlayer = getRandomPlayer(0, $players.length - 1);
+  $newGameBtn.forEach(function($item) {
+    $item.addEventListener('click', () => {
+      const randomPlayer = getRandomPlayerOrDiceNum(0, $players.length - 1);
+      resetPlayerCount($players);
+      setActivePlayer($players, randomPlayer);
+    });
+  });
+
+  $rollBtn.forEach(function($item) {
+    $item.addEventListener('click', () => {
+      const rolledNum = getRandomPlayerOrDiceNum();
+      const $activePlayer = getActivePlayer();
+
+      if (!$activePlayer) {
+        showInfoModal($infoModal, lang.warning, lang.startGame);
+        return;
+      }
+
+      showDots($dice[0], rolledNum);
+      addPoints($players, $activePlayer, rolledNum);
+    });
+  });
+
+  $savePointsBtn.forEach(function($item) {
+    $item.addEventListener('click', () => {
+      const $activePlayer = getActivePlayer();
+
+      if (!$activePlayer) {
+        showInfoModal($infoModal, lang.warning, lang.startGame);
+        return;
+      }
+
+      addTotalPoints($activePlayer, $players, limitToWin);
+    });
+  });
+
+  $modal.addEventListener('hidden.bs.modal', () => {
     resetPlayerCount($players);
-    setActivePlayer($players, randomPlayer);
-  });
-
-  $rollBtn[0].addEventListener('click', () => {
-    const rolledNum = getRandomDiceNum();
-    const $activePlayer = getActivePlayer();
-
-    if (!$activePlayer) return;
-
-    showDots($dice[0], rolledNum);
-    addPoints($players, $activePlayer, rolledNum);
-  });
-
-  $savePointsBtn[0].addEventListener('click', () => {
-    const $activePlayer = getActivePlayer();
-
-    if (!$activePlayer) return;
-
-    addTotalPoints($activePlayer, $players, limitToWin);
   });
 })();

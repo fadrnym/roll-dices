@@ -12,6 +12,10 @@
   background: #e7e7e7;
   box-shadow: inset 0 2px #d7d7d7, inset 0 -5px #bbb, inset 5px 0 #d7d7d7, inset -5px 0 #d7d7d7;
 
+  &.zoom {
+    animation: zoom-in-zoom-out 1s forwards;
+  }
+
   &__dot {
     display: flex;
     &::before {
@@ -73,5 +77,17 @@
         flex-basis: 100%;
       }
     }
+  }
+}
+
+@keyframes zoom-in-zoom-out {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.5, 1.5);
+  }
+  100% {
+    transform: scale(1, 1);
   }
 }

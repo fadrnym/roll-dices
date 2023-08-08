@@ -5,22 +5,31 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand" href="/">
-                RollDice {{ random(['html', 'css', 'js']) }}
+                RollDiceJS
             </a>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Domů</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pravidla</a>
+                        <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasRules" role="button" aria-controls="offcanvasRules" href="#">Pravidla</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Hledat" aria-label="Hledat">
-                    <button class="btn btn-outline-success" type="submit">Hledat</button>
-                </form>
             </div>
         </div>
     </nav>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRules" aria-labelledby="offcanvasRules">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Pravidla</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <p>
+                Cílem hry je nasbírat <strong>250 bodů</strong> dříve než váš protihráč. Stěžejní je pole <strong>Skóre</strong>.
+                Hodem kostky se body přičítají do skóre kola (<strong>Aktuální skóre</strong>). Hráč ukončuje svoje kolo
+                kliknutím na tlačítko <strong>Ukončit tah</strong>, čímž se mu body připíší do celkového skóre a na řadě je další hráč.
+                Hráč může házet kostkou jen do té doby, dokud nepadne na kostce číslo <strong>1</strong>. Pokud toto číslo padne,
+                ztrácí hráč všechny body v <strong>aktuálním skóre</strong> a pokračuje další hráč na řadě.
+            </p>
+        </div>
+    </div>
 </header>
