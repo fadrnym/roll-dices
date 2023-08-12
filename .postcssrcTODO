@@ -1,0 +1,8 @@
+{
+    "plugins": {
+        "postcss-uncss": {
+            html: ["./src/*.twig"],
+            ignore: [ "/^#offcanvas/", '.b-dice', '.b-dice', '.b-dice__dot', '.b-dice--1', '.b-dice--2', '.b-dice--2 .b-dice__dot:nth-of-type(2)', '.b-dice--3', '.b-dice--3 .b-dice__dot:nth-of-type(2)', '.b-dice--3 .b-dice__dot:nth-of-type(3)', '.b-dice--4', '.b-dice--4 .b-dice__dot', '.b-dice--5', '.b-dice--5 .b-dice__dot', '.b-dice--5 .b-dice__dot:nth-of-type(2)', '.b-dice--5 .b-dice__dot:nth-of-type(3)', '.b-dice--5 .b-dice__dot:nth-of-type(5)', '.b-dice--6', '.b-dice--6 .b-dice__dot', '.b-player.active', '.bg-success', '.offcanvas', '.offcanvas.show', '.offcanvas > *']
+        }
+    }
+}
