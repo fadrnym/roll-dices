@@ -1,4 +1,4 @@
-# skillmea-parcel-stack
+# JS-roll-dice
 
 
 
